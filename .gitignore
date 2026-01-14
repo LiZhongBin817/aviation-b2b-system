@@ -1,0 +1,24 @@
+# Logs
+aviation-b2b-system/logs
+aviation-b2b-system/*.log
+aviation-b2b-system/npm-debug.log*
+aviation-b2b-system/yarn-debug.log*
+aviation-b2b-system/yarn-error.log*
+aviation-b2b-system/pnpm-debug.log*
+aviation-b2b-system/lerna-debug.log*
+
+aviation-b2b-system/node_modules
+aviation-b2b-system/dist
+aviation-b2b-system/dist-ssr
+aviation-b2b-system/*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
