@@ -1,0 +1,775 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>04搜索列表</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="format-detection" content="telephone=no" />
+<!-- <link rel="shortcut icon" href="images/icon/favicon.ico"> -->
+<link rel="stylesheet" href="css/basic.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="swiper/swiper.min.css"/>
+<link rel="stylesheet" href="css/style-rel.css" />
+<link rel="stylesheet" href="iconfont/iconfont.css"/>
+<link type="text/css" rel="stylesheet" href="css/jedate.css">
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/placeholderfriend.js"></script>
+<!--[if IE]>
+    <script src="js/html5.js"></script>
+    <script src="js/respond.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--头部-->
+<div class="header-top">
+     <div class="wp">
+          <span class="iconfont icon-dianhua"></span>
+          <span>86-755-82255555</span>
+     </div>
+</div>
+<div class="search-bg">
+     <div class="header">
+          <div class="header-box">
+               <div class="menubtn">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+               </div>
+               <a href="" class="logo"><img src="images/logo.png"/></a>
+               <div class="nav">
+                    <ul class="clearfix">
+                         <li class="on">
+                              <span>
+                              <a href=""><b class="iconfont icon-feiji"></b> Book air tickets</a>
+                              </span>
+                         </li>
+                         <li>
+                              <span><a href=""><b class="iconfont icon-lvhangjiudian"></b> Book a hotel</a></span>
+                         </li>
+                         <li class="header-order">
+                              <span><a href=""><b class="iconfont icon-dingdan"></b> Order Management</a></span>
+                         </li>
+                         <li class="header-right">
+                              <a href="">
+                                   <span class="iconfont icon-wode"></span>
+                                   <span class="user-name">123456789@qq.com</span>
+                                   <span class="iconfont icon-tuichu"></span>
+                              </a>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+     <!--头部-->
+     <div class="wp">
+          <div class="bookbox">
+               <div class="bookbox-top">
+                    <a href="">PNR search</a>
+                    <a href="" class="on">Flight search</a>
+               </div>
+               <div class="condition">
+                    <div class="condition-box">
+                         <div class="condition-left">
+                              <a href="" class="on">
+                                   <span class="iconfont icon-icon_oversea_roundtr"></span>
+                                   <span>Round trip</span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon-jt_feiji"></span>
+                                   <span>One-way trip</span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon-tiaojianfenzhi"></span>
+                                   <span>Multiple passes<p>(including notches)</p></span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon--shuju-jingzhun"></span>
+                                   <span>Precise search</span>
+                              </a>
+                         </div>
+                         <div class="condition-right">
+                              <div class="personnel">
+                                   <span class="title">Adulthood</span>
+                                   <div class="personnel-number">
+                                        <span class="iconfont icon-jian jian"></span>
+                                        <input type="text" value="1" />
+                                        <span class="iconfont icon-jia add"></span>
+                                   </div>
+                              </div>
+                              <div class="personnel">
+                                   <span class="title">Children</span>
+                                   <div class="personnel-number">
+                                        <span class="iconfont icon-jian jian"></span>
+                                        <input type="text" value="1" />
+                                        <span class="iconfont icon-jia add"></span>
+                                   </div>
+                              </div>
+                              <div class="personnel">
+                                   <span class="title">Baby</span>
+                                   <div class="personnel-number">
+                                        <span class="iconfont icon-jian jian"></span>
+                                        <input type="text" value="1" />
+                                        <span class="iconfont icon-jia add"></span>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="flight-main">
+                         <div class="flightmain-cont">
+                              <div class="flight-location">
+                                   <div class="location-left">
+                                        <span class="iconfont icon-dizhi"></span>
+                                        <input type="text" placeholder="Set off" />
+                                   </div>
+                                   <div class="convert">
+                                        <span class="iconfont icon-arrow_lianjiearrow_connection-arrow"></span>
+                                   </div>
+                                   <div class="location-left location-right">
+                                        <span class="iconfont icon-dizhi"></span>
+                                        <input type="text" placeholder="Arrive" />
+                                   </div>
+                              </div>
+                              <div class="flight-time">
+                                   <span class="iconfont icon-rili"></span>
+                                   <input id="startTime" class="jeinput" name="startTime" type="text" readonly placeholder="Departure date" />
+                                   <b>-</b>
+                                   <input id="endTime" class="jeinput" name="endTime" type="text" readonly placeholder="Return date" />
+                              </div>
+                              <div class="airline">
+                                   <span class="iconfont icon-feiji"></span>
+                                   <input type="text" placeholder="Airline (optional)" />
+                              </div>
+                              <button class="search-btn">
+                                    <span class="iconfont icon-sousuo"></span>
+                              </button>
+                         </div>
+                    </div>
+                    <div class="flight-tips">
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way" checked>
+                            <label>Economy class</label>
+                         </div>
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way">
+                            <label>Preferred Economy Class</label>
+                         </div>
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way">
+                            <label>Business Class            </label>
+                         </div>
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way">
+                            <label>First class</label>
+                         </div>
+                    </div>
+               </div>
+               
+          </div>
+     </div>
+</div>
+     
+<div class="listbg">
+    <div class="wp">
+         <div class="list-box">
+              <div class="list-box-left">
+                   <div class="screenbox">
+                        <span>A total of <b>131</b> items were screened</span>
+                        <div class="tr"><a href="">Clear all</a></div>
+                   </div>
+                   <div class="scrennbox">
+                        <div class="flnubbox">
+                             <span>Flight number：</span>
+                             <div class="flsearcbox">
+                                  <input type="text" placeholder="" />
+                                  <button class="searchllbt">
+                                       <span class="iconfont icon-sousuo"></span>
+                                  </button>
+                             </div>
+                        </div>
+                   </div>
+                   <div class="scrennbox">
+                        <div class="title">Direct flight / transfer</div>
+                        <div class="transferbox">
+                             <div class="transfertext">
+                                 <input type="checkbox" name="">
+                                 <label>Direct flight</label>
+                             </div>
+                             <span>2138 CNY</span>
+                        </div>
+                        <div class="transferbox">
+                             <div class="transfertext">
+                                 <input type="checkbox" name="">
+                                 <label>One transfer</label>
+                             </div>
+                             <span>2244 CNY</span>
+                        </div>
+                        <div class="transferbox">
+                             <div class="transfertext">
+                                 <input type="checkbox" name="">
+                                 <label>Two transfers</label>
+                             </div>
+                             <span>4558 CNY</span>
+                        </div>
+                   </div>
+                   <div class="scrennbox">
+                        <div class="title">Departure time</div>
+                        <div class="slider-container">
+                            <div class="slider-track"></div>
+                            <div class="slider-range" id="slider-range"></div>
+                            <input type="range" min="0" max="24" value="0" class="slider min-slider" id="min-slider">
+                            <input type="range" min="0" max="24" value="15" class="slider max-slider" id="max-slider">
+                        </div>
+                        <div class="price-inputs">
+                                <span><span id="min-input">00</span>:00</span>
+                                <span><span id="max-input">24</span>:00</span>
+                        </div>
+                   </div>
+                   <div class="scrennbox">
+                        <div class="title">Arrival time</div>
+                        <div class="slider-container">
+                            <div class="slider-track"></div>
+                            <div class="slider-range" id="slider-range1"></div>
+                            <input type="range" min="0" max="24" value="0" class="slider min-slider" id="min-slider1">
+                            <input type="range" min="0" max="24" value="10" class="slider max-slider" id="max-slider1">
+                        </div>
+                        <div class="price-inputs">
+                                <span><span id="min-input1">00</span>:00</span>
+                                <span><span id="max-input1">24</span>:00</span>
+                        </div>
+                   </div>
+                   <div class="scrennbox">
+                        <div class="title">Airline</div>
+                        <div class="transferbox">
+                             <div class="transfertext">
+                                 <input type="checkbox" name="">
+                                 <img src="images/airline01.jpg" alt="">
+                                 <label>HX</label>
+                             </div>
+                             <span>2138 CNY</span>
+                        </div>
+                        <div class="transferbox">
+                             <div class="transfertext">
+                                 <input type="checkbox" name="">
+                                 <img src="images/airline02.jpg" alt="">
+                                 <label>HX</label>
+                             </div>
+                             <span>2244 CNY</span>
+                        </div>
+                        <div class="transferbox">
+                             <div class="transfertext">
+                                 <input type="checkbox" name="">
+                                 <img src="images/airline03.jpg" alt="">
+                                 <label>HX</label>
+                             </div>
+                             <span>4558 CNY</span>
+                        </div>
+                   </div>
+
+              </div>
+              <div class="list-box-right">
+                   <div class="itinerarytop">
+                        <div class="itinerarytop-left">
+                             <p>Departure: Hong Kong → Bangkok, Thursday, January 1st</p>
+                             <span>All departure / arrival times are local time</span>
+                        </div>
+                        <div class="itinerarytop-right">
+                             <a href="" class="on">Free</a>
+                             <a href="">Round-trip</a>
+                        </div>
+                   </div>
+                   <div class="itineraryfilter">
+                        <a href="" class="on">Direct flight priority</a>
+                        <a href="" class="shangxai">
+                            <span>Departure time</span>
+                            <div class="shaicon">
+                                <span class="iconfont icon-shangxiajiantou1-copy"></span>
+                            </div>
+                        </a>
+                        <a href="" class="shangxai">
+                            <span>Arrival time</span>
+                            <div class="shaicon">
+                                <span class="iconfont icon-shangxiajiantou1-copy"></span>
+                            </div>
+                        </a>
+                        <a href="" class="shangxai">
+                            <span>Total time</span>
+                            <div class="shaicon">
+                                <span class="iconfont icon-shangxiajiantou1-copy"></span>
+                            </div>
+                        </a>
+                        <a href="" class="shangxai shaprice">
+                            <span>Price</span>
+                            <div class="shaicon">
+                                <span class="iconfont icon-shangxiajiantou1-copy"></span>
+                            </div>
+                        </a>
+                   </div>
+                   <div class="lowestbox">
+                        <div class="lowesttext">Direct flight lowest</div>
+                        <div class="pnrserch-list-top">
+                            <div class="pnrserch-name">
+                                <img src="images/pnrtb.jpg" alt="">
+                                <div class="pnrserch-name-text">
+                                    <p>hx759</p>
+                                </div>
+                                <div class="hban">T6</div>
+                            </div>
+                            <div class="pnrserch-flightbox">
+                                <div class="pnrserch-flightbox-text tc">
+                                    <h3>23:45</h3>
+                                    <p>hkg</p>
+                                </div>
+                                <div class="pnrserch-flightbox-planetp">
+                                        <span class="iconfont icon-jt_feiji"></span>
+                                </div>
+                                <div class="pnrserch-flightbox-text tc">
+                                    <h3>01:50</h3>
+                                    <p>bkk</p>
+                                </div>
+                            </div>
+                            <div class="pnrserch-time tc">
+                                <span class="iconfont icon-shijian"></span>
+                                <span>6h5m</span>
+                            </div>
+                            <div class="pnrserch-item-right">
+                                <div>
+                                    <h3>2138.00</h3>
+                                    <span>cNY since</span>
+                                </div>
+                                <a href="" class="reservation">CRYSTAL</a>
+                            </div>
+                        </div>
+                        <div class="lowest-bottom">
+                             <div class="pnrserch-list-content">
+                                  <div class="pnrserch-box">
+                                        <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                         <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                         <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                  </div>
+                             </div>
+                        </div>
+
+                   </div>
+                   <div class="lowestbox">
+                        <div class="lowesttext">Direct flight lowest</div>
+                        <div class="pnrserch-list-top">
+                            <div class="pnrserch-name">
+                                <img src="images/pnrtb.jpg" alt="">
+                                <div class="pnrserch-name-text">
+                                    <p>hx759</p>
+                                </div>
+                                <div class="hban">T6</div>
+                            </div>
+                            <div class="pnrserch-flightbox">
+                                <div class="pnrserch-flightbox-text tc">
+                                    <h3>23:45</h3>
+                                    <p>hkg</p>
+                                </div>
+                                <div class="pnrserch-flightbox-planetp">
+                                        <span class="iconfont icon-jt_feiji"></span>
+                                </div>
+                                <div class="pnrserch-flightbox-text tc">
+                                    <h3>01:50</h3>
+                                    <p>bkk</p>
+                                </div>
+                            </div>
+                            <div class="pnrserch-time tc">
+                                <span class="iconfont icon-shijian"></span>
+                                <span>6h5m</span>
+                            </div>
+                            <div class="pnrserch-item-right">
+                                <div>
+                                    <h3>2138.00</h3>
+                                    <span>cNY since</span>
+                                </div>
+                                <a href="" class="reservation">CRYSTAL</a>
+                            </div>
+                        </div>
+                        <div class="lowest-bottom">
+                             <div class="pnrserch-list-content">
+                                  <div class="pnrserch-box">
+                                        <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                         <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                         <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                  </div>
+                             </div>
+                        </div>
+
+                   </div>
+                   <div class="lowestbox">
+                        <div class="lowesttext">Direct flight lowest</div>
+                        <div class="pnrserch-list-top">
+                            <div class="pnrserch-name">
+                                <img src="images/pnrtb.jpg" alt="">
+                                <div class="pnrserch-name-text">
+                                    <p>hx759</p>
+                                </div>
+                                <div class="hban">T6</div>
+                            </div>
+                            <div class="pnrserch-flightbox">
+                                <div class="pnrserch-flightbox-text tc">
+                                    <h3>23:45</h3>
+                                    <p>hkg</p>
+                                </div>
+                                <div class="pnrserch-flightbox-planetp">
+                                        <span class="iconfont icon-jt_feiji"></span>
+                                </div>
+                                <div class="pnrserch-flightbox-text tc">
+                                    <h3>01:50</h3>
+                                    <p>bkk</p>
+                                </div>
+                            </div>
+                            <div class="pnrserch-time tc">
+                                <span class="iconfont icon-shijian"></span>
+                                <span>6h5m</span>
+                            </div>
+                            <div class="pnrserch-item-right">
+                                <div>
+                                    <h3>2138.00</h3>
+                                    <span>cNY since</span>
+                                </div>
+                                <a href="" class="reservation">CRYSTAL</a>
+                            </div>
+                        </div>
+                        <div class="lowest-bottom">
+                             <div class="pnrserch-list-content">
+                                  <div class="pnrserch-box">
+                                        <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                         <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                         <div class="pnrserch-item">
+                                              <div class="pnrserch-item-left">
+                                                   <span>Self-operated air routes</span>
+                                                   <p>Tickets will be issued within one hour</p>
+                                              </div>
+                                              <div class="pnrserch-item-cont">
+                                                   <span>Cabin : T8</span>| 
+                                                   <span>Brand freight rate</span>| 
+                                                   <span>Fare Basis </span>| 
+                                                   <span>Baggage allowance</span>
+                                                   
+                                              </div>
+                                              <div class="pnrserch-item-right">
+                                                   <div>
+                                                       <h3>3200.00</h3>
+                                                       <span>CNY</span>
+                                                   </div>
+                                                   <a href="" class="reservation">Reservation</a>
+                                              </div>
+                                         </div>
+                                  </div>
+                             </div>
+                        </div>
+
+                   </div>
+
+              </div>
+         </div>
+    </div>
+</div>
+
+<div class="footer-bg">
+     <div class="wp">
+          <div class="footer-top">
+               <div class="footer-top-left">
+                    <div class="wat"><img src="images/wat.jpg" alt=""></div>
+                    <div>
+                         <p>Route working hours</p>
+                         <p>00:00-23:59(GMT+8)</p>
+                    </div>
+               </div>
+               <div class="footer-top-right">
+                    <a href="" target="_blank"><span class="iconfont icon-weixin"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-youjian"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-douyin"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-birdxiaoniao"></span></a>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>Yue ICP No. 2022074476. All rights reserved by Zhongyuan Aviation ©</p>
+          </div>
+     </div>
+</div>
+
+<!--底部-->
+</body>
+<!--own js-->
+     <script type="text/javascript" src="js/wow.min.js"></script>
+     <script type="text/javascript" src="swiper/swiper.min.js"></script>
+     <script type="text/javascript" src="js/jedate.js"></script>
+     <script src="js/js.js"></script>
+     <script type="text/javascript">
+          $(function(){
+               jeDate("#startTime", {
+                //onClose:false,
+                format: "YYYY-MM-DD"
+                });
+                jeDate("#endTime", {
+                //onClose:false,
+                format: "YYYY-MM-DD"
+                });
+
+
+                $(".lowestbox").click(function(){
+                    $(this).toggleClass("active");
+                })
+          });
+     </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const minSlider = document.getElementById('min-slider');
+            const maxSlider = document.getElementById('max-slider');
+            const minInput = document.getElementById('min-input');
+            const maxInput = document.getElementById('max-input');
+            const sliderRange = document.getElementById('slider-range');
+
+            const minSlider1 = document.getElementById('min-slider1');
+            const maxSlider1 = document.getElementById('max-slider1');
+            const minInput1 = document.getElementById('min-input1');
+            const maxInput1 = document.getElementById('max-input1');
+            const sliderRange1 = document.getElementById('slider-range1');
+            
+            // 初始化滑块范围显示
+            updateSliderRange();
+            // 最小滑块事件监听
+            minSlider.addEventListener('input', function() {
+                let minVal = parseInt(minSlider.value);
+                let maxVal = parseInt(maxSlider.value);
+                
+                if (minVal > maxVal) {
+                    minSlider.innerHTML = maxVal;
+                    minVal = maxVal;
+                }
+                
+                minInput.innerHTML = minVal;
+               // minPrice.textContent = minVal;
+                updateSliderRange();
+            });
+            
+            // 最大滑块事件监听
+            maxSlider.addEventListener('input', function() {
+                let minVal = parseInt(minSlider.value);
+                let maxVal = parseInt(maxSlider.value);
+                
+                if (maxVal < minVal) {
+                    maxSlider.innerHTML = minVal;
+                    maxVal = minVal;
+                }
+                
+                maxInput.innerHTML = maxVal;
+              //  maxPrice.textContent = maxVal;
+                updateSliderRange();
+            });
+            
+            // 更新滑块范围显示
+            function updateSliderRange() {
+                const minVal = parseInt(minSlider.value);
+                const maxVal = parseInt(maxSlider.value);
+                const minPercent = (minVal / 24) * 100;
+                const maxPercent = (maxVal / 24) * 100;
+                
+                sliderRange.style.left = minPercent + '%';
+                sliderRange.style.width = (maxPercent - minPercent) + '%';
+            }
+
+            updateSliderRange1();
+            minSlider1.addEventListener('input', function() {
+                let minVal = parseInt(minSlider1.value);
+                let maxVal = parseInt(maxSlider1.value);
+                
+                if (minVal > maxVal) {
+                    minSlider1.innerHTML = maxVal;
+                    minVal = maxVal;
+                }
+                
+                minInput1.innerHTML = minVal;
+               // minPrice.textContent = minVal;
+                updateSliderRange1();
+            });
+            
+            // 最大滑块事件监听
+            maxSlider1.addEventListener('input', function() {
+                let minVal = parseInt(minSlider1.value);
+                let maxVal = parseInt(maxSlider1.value);
+                
+                if (maxVal < minVal) {
+                    maxSlider1.innerHTML = minVal;
+                    maxVal = minVal;
+                }
+                
+                maxInput1.innerHTML = maxVal;
+              //  maxPrice.textContent = maxVal;
+                updateSliderRange1();
+            });
+            
+            // 更新滑块范围显示
+            function updateSliderRange1() {
+                const minVal = parseInt(minSlider1.value);
+                const maxVal = parseInt(maxSlider1.value);
+                const minPercent = (minVal / 24) * 100;
+                const maxPercent = (maxVal / 24) * 100;
+                
+                sliderRange1.style.left = minPercent + '%';
+                sliderRange1.style.width = (maxPercent - minPercent) + '%';
+            }
+        });
+    </script>
+</html>
+

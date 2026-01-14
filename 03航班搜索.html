@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>03航班搜索</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="format-detection" content="telephone=no" />
+<!-- <link rel="shortcut icon" href="images/icon/favicon.ico"> -->
+<link rel="stylesheet" href="css/basic.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="swiper/swiper.min.css"/>
+<link rel="stylesheet" href="css/style-rel.css" />
+<link rel="stylesheet" href="iconfont/iconfont.css"/>
+<link type="text/css" rel="stylesheet" href="css/jedate.css">
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/placeholderfriend.js"></script>
+<!--[if IE]>
+    <script src="js/html5.js"></script>
+    <script src="js/respond.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--头部-->
+<div class="header-top">
+     <div class="wp">
+          <span class="iconfont icon-dianhua"></span>
+          <span>86-755-82255555</span>
+     </div>
+</div>
+<div class="search-bg">
+     <div class="header">
+          <div class="header-box">
+               <div class="menubtn">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+               </div>
+               <a href="" class="logo"><img src="images/logo.png"/></a>
+               <div class="nav">
+                    <ul class="clearfix">
+                         <li class="on">
+                              <span>
+                              <a href=""><b class="iconfont icon-feiji"></b> Book air tickets</a>
+                              </span>
+                         </li>
+                         <li>
+                              <span><a href=""><b class="iconfont icon-lvhangjiudian"></b> Book a hotel</a></span>
+                         </li>
+                         <li class="header-order">
+                              <span><a href=""><b class="iconfont icon-dingdan"></b> Order Management</a></span>
+                         </li>
+                         <li class="header-right">
+                              <a href="">
+                                   <span class="iconfont icon-wode"></span>
+                                   <span class="user-name">123456789@qq.com</span>
+                                   <span class="iconfont icon-tuichu"></span>
+                              </a>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+     <!--头部-->
+     <div class="wp">
+          <div class="bookbox">
+               <div class="bookbox-top">
+                    <a href="">PNR search</a>
+                    <a href="" class="on">Flight search</a>
+               </div>
+               <div class="condition">
+                    <div class="condition-box">
+                         <div class="condition-left">
+                              <a href="" class="on">
+                                   <span class="iconfont icon-icon_oversea_roundtr"></span>
+                                   <span>Round trip</span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon-jt_feiji"></span>
+                                   <span>One-way trip</span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon-tiaojianfenzhi"></span>
+                                   <span>Multiple passes<p>(including notches)</p></span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon--shuju-jingzhun"></span>
+                                   <span>Precise search</span>
+                              </a>
+                         </div>
+                         <div class="condition-right">
+                              <div class="personnel">
+                                   <span class="title">Adulthood</span>
+                                   <div class="personnel-number">
+                                        <span class="iconfont icon-jian jian"></span>
+                                        <input type="text" value="1" />
+                                        <span class="iconfont icon-jia add"></span>
+                                   </div>
+                              </div>
+                              <div class="personnel">
+                                   <span class="title">Children</span>
+                                   <div class="personnel-number">
+                                        <span class="iconfont icon-jian jian"></span>
+                                        <input type="text" value="1" />
+                                        <span class="iconfont icon-jia add"></span>
+                                   </div>
+                              </div>
+                              <div class="personnel">
+                                   <span class="title">Baby</span>
+                                   <div class="personnel-number">
+                                        <span class="iconfont icon-jian jian"></span>
+                                        <input type="text" value="1" />
+                                        <span class="iconfont icon-jia add"></span>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="flight-main">
+                         <div class="flightmain-cont">
+                              <div class="flight-location">
+                                   <div class="location-left">
+                                        <span class="iconfont icon-dizhi"></span>
+                                        <input type="text" placeholder="Set off" />
+                                   </div>
+                                   <div class="convert">
+                                        <span class="iconfont icon-arrow_lianjiearrow_connection-arrow"></span>
+                                   </div>
+                                   <div class="location-left location-right">
+                                        <span class="iconfont icon-dizhi"></span>
+                                        <input type="text" placeholder="Arrive" />
+                                   </div>
+                              </div>
+                              <div class="flight-time">
+                                   <span class="iconfont icon-rili"></span>
+                                   <input id="startTime" class="jeinput" name="startTime" type="text" readonly placeholder="Departure date" />
+                                   <b>-</b>
+                                   <input id="endTime" class="jeinput" name="endTime" type="text" readonly placeholder="Return date" />
+                              </div>
+                              <div class="airline">
+                                   <span class="iconfont icon-feiji"></span>
+                                   <input type="text" placeholder="Airline (optional)" />
+                              </div>
+                              <button class="search-btn">
+                                    <span class="iconfont icon-sousuo"></span>
+                              </button>
+                         </div>
+                    </div>
+                    <div class="flight-tips">
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way" checked>
+                            <label>Economy class</label>
+                         </div>
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way">
+                            <label>Preferred Economy Class</label>
+                         </div>
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way">
+                            <label>Business Class            </label>
+                         </div>
+                         <div>
+                            <input type="radio" name="flight-type" value="one-way">
+                            <label>First class</label>
+                         </div>
+                    </div>
+               </div>
+               
+          </div>
+     </div>
+</div>
+     
+<div class="wp">
+      <div class="policy-box">
+           <div class="policy-title">Policy promotion</div>
+           <div class="policy-ul">
+               <div class="policy-item">
+                    <span class="policy-rate">3.25%</span>
+                    <span>MH</span>
+                    <div class="policy-content">
+                         <div class="policypadd">
+                              <p>One-way/round-trip</p>
+                         <p>Departure: MY</p>
+                         <p>Arrival: Global Excluded country: MY</p>
+                         <p>Mixed cabin: Yes</p>
+                         <p>haring: Sharing is supported. Rebate :0.00%
+FareBasis: Exclude the following Farebasis:O*
+Sales validity period: 2025/07/01-2025/09/30
+</p>
+                         <p>Valid dates for the outbound trip: 2025/07/01-2025/09/30</p>
+                         <p>Valid dates for the return trip: 2025/07/01-2025/09/30</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="policy-item">
+                    <span class="policy-rate">3.25%</span>
+                    <span>MH</span>
+                    <div class="policy-content">
+                         <div class="policypadd">
+                              <p>One-way/round-trip</p>
+                         <p>Departure: MY</p>
+                         <p>Arrival: Global Excluded country: MY</p>
+                         <p>Mixed cabin: Yes</p>
+                         <p>haring: Sharing is supported. Rebate :0.00%
+FareBasis: Exclude the following Farebasis:O*
+Sales validity period: 2025/07/01-2025/09/30
+</p>
+                         <p>Valid dates for the outbound trip: 2025/07/01-2025/09/30</p>
+                         <p>Valid dates for the return trip: 2025/07/01-2025/09/30</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="policy-item">
+                    <span class="policy-rate">3.25%</span>
+                    <span>MH</span>
+                    <div class="policy-content">
+                         <div class="policypadd">
+                              <p>One-way/round-trip</p>
+                         <p>Departure: MY</p>
+                         <p>Arrival: Global Excluded country: MY</p>
+                         <p>Mixed cabin: Yes</p>
+                         <p>haring: Sharing is supported. Rebate :0.00%
+FareBasis: Exclude the following Farebasis:O*
+Sales validity period: 2025/07/01-2025/09/30
+</p>
+                         <p>Valid dates for the outbound trip: 2025/07/01-2025/09/30</p>
+                         <p>Valid dates for the return trip: 2025/07/01-2025/09/30</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="policy-item">
+                    <span class="policy-rate">3.25%</span>
+                    <span>MH</span>
+                    <div class="policy-content">
+                         <div class="policypadd">
+                              <p>One-way/round-trip</p>
+                         <p>Departure: MY</p>
+                         <p>Arrival: Global Excluded country: MY</p>
+                         <p>Mixed cabin: Yes</p>
+                         <p>haring: Sharing is supported. Rebate :0.00%
+FareBasis: Exclude the following Farebasis:O*
+Sales validity period: 2025/07/01-2025/09/30
+</p>
+                         <p>Valid dates for the outbound trip: 2025/07/01-2025/09/30</p>
+                         <p>Valid dates for the return trip: 2025/07/01-2025/09/30</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="policy-item">
+                    <span class="policy-rate">3.25%</span>
+                    <span>MH</span>
+                    <div class="policy-content">
+                         <div class="policypadd">
+                              <p>One-way/round-trip</p>
+                         <p>Departure: MY</p>
+                         <p>Arrival: Global Excluded country: MY</p>
+                         <p>Mixed cabin: Yes</p>
+                         <p>haring: Sharing is supported. Rebate :0.00%
+FareBasis: Exclude the following Farebasis:O*
+Sales validity period: 2025/07/01-2025/09/30
+</p>
+                         <p>Valid dates for the outbound trip: 2025/07/01-2025/09/30</p>
+                         <p>Valid dates for the return trip: 2025/07/01-2025/09/30</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="policy-item">
+                    <span class="policy-rate">3.25%</span>
+                    <span>MH</span>
+                    <div class="policy-content">
+                         <div class="policypadd">
+                              <p>One-way/round-trip</p>
+                         <p>Departure: MY</p>
+                         <p>Arrival: Global Excluded country: MY</p>
+                         <p>Mixed cabin: Yes</p>
+                         <p>haring: Sharing is supported. Rebate :0.00%
+FareBasis: Exclude the following Farebasis:O*
+Sales validity period: 2025/07/01-2025/09/30
+</p>
+                         <p>Valid dates for the outbound trip: 2025/07/01-2025/09/30</p>
+                         <p>Valid dates for the return trip: 2025/07/01-2025/09/30</p>
+                         </div>
+                    </div>
+               </div>
+
+
+           </div>
+      </div>
+</div>
+
+
+<div class="footer-bg">
+     <div class="wp">
+          <div class="footer-top">
+               <div class="footer-top-left">
+                    <div class="wat"><img src="images/wat.jpg" alt=""></div>
+                    <div>
+                         <p>Route working hours</p>
+                         <p>00:00-23:59(GMT+8)</p>
+                    </div>
+               </div>
+               <div class="footer-top-right">
+                    <a href="" target="_blank"><span class="iconfont icon-weixin"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-youjian"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-douyin"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-birdxiaoniao"></span></a>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>Yue ICP No. 2022074476. All rights reserved by Zhongyuan Aviation ©</p>
+          </div>
+     </div>
+</div>
+
+<!--底部-->
+</body>
+<!--own js-->
+     <script type="text/javascript" src="js/wow.min.js"></script>
+     <script type="text/javascript" src="swiper/swiper.min.js"></script>
+     <script type="text/javascript" src="js/jedate.js"></script>
+     <script src="js/js.js"></script>
+     <script type="text/javascript">
+          $(function(){
+               jeDate("#startTime", {
+                //onClose:false,
+                format: "YYYY-MM-DD"
+                });
+                jeDate("#endTime", {
+                //onClose:false,
+                format: "YYYY-MM-DD"
+                });
+          });
+     </script>
+</html>
+

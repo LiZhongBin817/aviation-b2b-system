@@ -1,0 +1,414 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>06订单管理</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="format-detection" content="telephone=no" />
+<!-- <link rel="shortcut icon" href="images/icon/favicon.ico"> -->
+<link rel="stylesheet" href="css/basic.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="swiper/swiper.min.css"/>
+<link rel="stylesheet" href="css/style-rel.css" />
+<link rel="stylesheet" href="iconfont/iconfont.css"/>
+<link type="text/css" rel="stylesheet" href="css/jedate.css">
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/placeholderfriend.js"></script>
+<!--[if IE]>
+    <script src="js/html5.js"></script>
+    <script src="js/respond.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--头部-->
+<div class="header-top ddglbox">
+     <a href="" class="logo"><img src="images/logo.png"/></a>
+     <div class="ddglbftle">
+          <div>
+              <span class="iconfont icon-dianhua"></span>
+              <span>86-755-82255555</span>
+          </div>
+          <div class="header-right">
+               <a href="">
+                    <span class="iconfont icon-wode"></span>
+                    <span class="user-name">123456789@qq.com</span>
+                    <span class="iconfont icon-tuichu"></span>
+                </a>
+          </div>
+     </div>
+</div>
+
+<div class="ticketbox">
+     <div class="ticket-left">
+          <dl>
+               <dt>
+                    <div class="naleft">
+                         <span class="iconfont icon-jt_feiji"></span>
+                         <span class="dttite">Flight ticket search</span>
+                    </div>
+                    <span class="iconfont icon-xialajiantou tijiant"></span>
+               </dt>
+               <dd data-id="1" data-title="PNR search"><a href="javascript:void(0);">PNR search</a></dd>
+               <dd data-id="2" data-title="Flight search"><a href="javascript:void(0);">Flight search</a></dd>
+          </dl>
+          <dl  class="on">
+               <dt>
+                    <div class="naleft">
+                         <span class="iconfont icon-dingdan1"></span>
+                         <span class="dttite">Air ticket order management</span>
+                    </div>
+                    <span class="iconfont icon-xialajiantou tijiant"></span>
+               </dt>
+               <dd data-id="4" data-title="Ticket issuance order"><a href="javascript:void(0);">Ticket issuance order</a></dd>
+               <dd data-id="5" data-title="Refund order"><a href="javascript:void(0);">Refund order</a></dd>
+               <dd data-id="6" data-title="Invalid ticket order"><a href="javascript:void(0);">Invalid ticket order</a></dd>
+               <dd data-id="7" data-title="Rescheduled order"><a href="javascript:void(0);">Rescheduled order</a></dd>
+               <dd data-id="8" data-title="All orders"><a href="javascript:void(0);">All orders</a></dd>
+          </dl>
+     </div>
+     <div class="ticket-right">
+          <div class="tickettitle">Order management  /  Invoice order management</div>
+          <div class="ticktips" id="tabsContainer">
+               <div class="tickdiv">PNR search <span class="iconfont icon-guanbi1"></span></div>
+          </div>
+          <div class="manageBg">
+               <div id="content">
+               <div class="managetop">
+                    <div class="manageleft">
+                         <div class="managetext">
+                              <span>From the date of the order：</span>
+                              <div class="managetextbox managetime">
+                                   <input type="text" id="starttime" placeholder="From December 30, 2024">
+                                   <span>~</span>
+                                   <input type="text" id="endtime" placeholder="To December 31, 2024">
+                              </div>
+                         </div>
+                         <div class="managetext">
+                              <span>Route order number :</span>
+                              <div class="managetextbox">
+                                   <input type="text" id="" placeholder="">
+                              </div>
+                         </div>
+                         <div class="managetext">
+                              <span>Order PNR :</span>
+                              <div class="managetextbox">
+                                   <input type="text" id="" placeholder="">
+                              </div>
+                         </div>
+                         <div class="managetext">
+                              <span>Ticket number :</span>
+                              <div class="managetextbox">
+                                   <input type="text" id="" placeholder="">
+                              </div>
+                         </div>
+                         <div class="managetext">
+                              <span>Order source:</span>
+                              <div class="managetextbox">
+                                   <input type="text" id="" placeholder="">
+                              </div>
+                         </div>
+                         <div class="managetext">
+                              <span>Third-party order :</span>
+                              <div class="managetextbox">
+                                   <input type="text" id="" placeholder="">
+                              </div>
+                         </div>
+                    </div>
+                    <button class="querybtn">Query</button>
+               </div>
+               <div class="managebox">
+                    <div class="managenav">
+                         <a href="" class="on">All status</a>
+                         <a href="">order was successful</a>
+                         <a href="">A ticket has been applied for</a>
+                         <a href="">Ticket issuance completed</a>
+                         <a href="">Wait for confirmation</a>
+                         <a href="">Order cancelled</a>
+                    </div>
+                    <div class="managetable">
+                         <table>
+                              <tr>
+                                   <th>Route order number</th>
+                                   <th>Creation time</th>
+                                   <th>Order PNR</th>
+                                   <th>Flight number</th>
+                                   <th>Itinerary</th>
+                                   <th>Flight date</th>
+                                   <th>TBig code</th>
+                                   <th>Order cost (CNY)</th>
+                                   <th>Order status</th>
+                                   <th>Operator</th>
+                              </tr>
+                              <tr>
+                                   <td><span class="blue">17519535044484840</span></td>
+                                   <td>2024-07-10 15:58:18</td>
+                                   <td>8C527N</td>
+                                   <td>mu772 mu5373</td>
+                                   <td>2024-12-31</td>
+                                   <td>123456</td>
+                                   <td>1000.00</td>
+                                   <td>order was successful</td>
+                                   <td>Operator 1</td>
+                                   <td>Operator 1</td>
+                              </tr>
+                              <tr>
+                                   <td><span class="blue">17519535044484840</span></td>
+                                   <td>2024-07-10 15:58:18</td>
+                                   <td>8C527N</td>
+                                   <td>mu772 mu5373</td>
+                                   <td>2024-12-31</td>
+                                   <td>123456</td>
+                                   <td>1000.00</td>
+                                   <td>order was successful</td>
+                                   <td>Operator 1</td>
+                                   <td>Operator 1</td>
+                              </tr>
+                              <tr>
+                                   <td><span class="blue">17519535044484840</span></td>
+                                   <td>2024-07-10 15:58:18</td>
+                                   <td>8C527N</td>
+                                   <td>mu772 mu5373</td>
+                                   <td>2024-12-31</td>
+                                   <td>123456</td>
+                                   <td>1000.00</td>
+                                   <td>order was successful</td>
+                                   <td>Operator 1</td>
+                                   <td>Operator 1</td>
+                              </tr>
+                              <tr>
+                                   <td><span class="blue">17519535044484840</span></td>
+                                   <td>2024-07-10 15:58:18</td>
+                                   <td>8C527N</td>
+                                   <td>mu772 mu5373</td>
+                                   <td>2024-12-31</td>
+                                   <td>123456</td>
+                                   <td>1000.00</td>
+                                   <td>order was successful</td>
+                                   <td>Operator 1</td>
+                                   <td>Operator 1</td>
+                              </tr>
+                              <tr>
+                                   <td><span class="blue">17519535044484840</span></td>
+                                   <td>2024-07-10 15:58:18</td>
+                                   <td>8C527N</td>
+                                   <td>mu772 mu5373</td>
+                                   <td>2024-12-31</td>
+                                   <td>123456</td>
+                                   <td>1000.00</td>
+                                   <td>order was successful</td>
+                                   <td>Operator 1</td>
+                                   <td>Operator 1</td>
+                              </tr>
+                         </table>
+                         <div class="pagebox">
+                              <a href="" class="papeev">
+                                   <span class="iconfont icon-fenyeshouye"></span>
+                              </a>
+                              <a href="">
+                                   <span class="iconfont icon-fenyejiantouzuo"></span>
+                              </a>
+                              <a href="" class="on"> 1</a>
+                              <a href=""> 2</a>
+                              <a href=""> 3</a>
+                              <a href=""> 4</a>
+                              <a href="">
+                                   <span class="iconfont icon-fenyejiantouyou"></span>
+                              </a>
+                              <a href="" class="papeev">
+                                   <span class="iconfont icon-fenye-weiyex"></span>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+
+               </div>
+               
+          </div>
+     </div>
+</div>
+   
+     
+
+
+
+<div class="footer-bg">
+     <div class="wp">
+          <div class="footer-top">
+               <div class="footer-top-left">
+                    <div class="wat"><img src="images/wat.jpg" alt=""></div>
+                    <div>
+                         <p>Route working hours</p>
+                         <p>00:00-23:59(GMT+8)</p>
+                    </div>
+               </div>
+               <div class="footer-top-right">
+                    <a href="" target="_blank"><span class="iconfont icon-weixin"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-youjian"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-douyin"></span></a>
+                    <a href="" target="_blank"><span class="iconfont icon-birdxiaoniao"></span></a>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>Yue ICP No. 2022074476. All rights reserved by Zhongyuan Aviation ©</p>
+          </div>
+     </div>
+</div>
+
+<!--底部-->
+</body>
+<!--own js-->
+     <script type="text/javascript" src="js/wow.min.js"></script>
+     <script type="text/javascript" src="swiper/swiper.min.js"></script>
+     <script type="text/javascript" src="js/jedate.js"></script>
+     <script src="js/js.js"></script>
+     <script type="text/javascript">
+          $(function(){
+               jeDate("#starttime", {
+                    mode:'datetime',
+                    format: "YYYY-MM-DD",
+                  //  maxDate: "#F{$dp.$D('endtime')}",
+                });
+                jeDate("#endtime", {
+                    mode:'datetime',
+                    format: "YYYY-MM-DD",
+                   // minDate: "#F{$dp.$D('starttime')}",
+                 
+                });
+
+               // 导航
+               $(".ticket-left dl").click(function(){
+                    $(this).addClass("on").siblings().removeClass("on");
+               
+               });
+               
+
+               // 菜单点击事件
+            $('.ticket-left dd').click(function() {
+                const id = $(this).data('id');
+                const title = $(this).data('title');
+                openTab(id, title);
+                
+                // 更新菜单激活状态
+                $('.ticket-left dd').removeClass('on');
+                $(this).addClass('on');
+            });
+               
+               // 导航标签
+               let tabs = [];
+               let activeTabId = null;
+               openTab('1', 'PNR search');
+
+               // 打开/激活标签页
+            function openTab(id, title) {
+                // 检查是否已存在
+                const existingTab = tabs.find(tab => tab.id === id);
+                
+                if (existingTab) {
+                    // 如果已存在，激活它
+                    activateTab(id);
+                } else {
+                    // 创建新标签页
+                    const tab = {
+                        id: id,
+                        title: title,
+                        content: `${title} 的内容区域<br>ID: ${id}<br>时间: ${new Date().toLocaleTimeString()}`
+                    };
+                    tabs.push(tab);
+                    renderTabs();
+                    activateTab(id);
+                }
+            }
+             // 激活标签页
+            function activateTab(id) {
+                activeTabId = id;
+                
+                // 更新标签页状态
+                $('.tab').removeClass('active');
+                $(`.tab[data-id="${id}"]`).addClass('active');
+                
+                // 更新内容
+                 const tab = tabs.find(tab => tab.id === id);
+                 if (tab) {
+                     $('#content').html(tab.content);
+                 }
+            }
+             // 渲染标签页
+            function renderTabs() {
+                const $container = $('#tabsContainer');
+                $container.empty();
+                
+                tabs.forEach(tab => {
+                    const $tab = $(`
+                        <div class="tab" data-id="${tab.id}">
+                            ${tab.title}
+                            <span class="close-btn">×</span>
+                        </div>
+                    `);
+                    
+                    if (tab.id === activeTabId) {
+                        $tab.addClass('active');
+                    }
+                    
+                    // 点击标签页（不包括关闭按钮）
+                    $tab.on('click', function(e) {
+                        if (!$(e.target).hasClass('close-btn')) {
+                            activateTab(tab.id);
+                            
+                            // 更新菜单激活状态
+                            $('.ticket-left dd').removeClass('on');
+                            $(`.ticket-left dd[data-id="${tab.id}"]`).addClass('on');
+                        }
+                    });
+                    
+                    // 关闭按钮事件
+                    $tab.find('.close-btn').on('click', function(e) {
+                        closeTab(tab.id, e);
+                    });
+                    
+                    $container.append($tab);
+                });
+            }
+
+             // 关闭标签页
+            function closeTab(id, event) {
+                if (event) event.stopPropagation(); // 阻止事件冒泡
+                
+                if (tabs.length <= 1) {
+                    alert('至少保留一个标签页');
+                    return;
+                }
+                
+                // 移除标签页
+                const tabIndex = tabs.findIndex(tab => tab.id === id);
+                tabs.splice(tabIndex, 1);
+                
+                // 如果关闭的是当前激活的标签页，激活前一个
+                if (id === activeTabId) {
+                    const prevTab = tabs[Math.max(0, tabIndex - 1)];
+                    if (prevTab) {
+                        activateTab(prevTab.id);
+                    }
+                }
+                
+                renderTabs();
+                
+                // 如果关闭了当前激活菜单对应的标签页，清除菜单激活状态
+                $(`.ticket-left dd[data-id="${id}"]`).removeClass('on');
+            }
+
+
+
+
+
+                
+          });
+     </script>
+     
+</html>
+
