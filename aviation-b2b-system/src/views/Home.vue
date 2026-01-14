@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="header">
-      <h1 class="title">纯手工打造 · 然然管理系统</h1>
+      <h1 class="title">纯手工打造 · 管理系统</h1>
       <p class="tagline">匠心编码 · 轻量简洁</p>
     </div>
 

@@ -54,6 +54,62 @@ export const constantRoutes = [
                 name: "Index",
                 component: () => import("@/views/Home.vue"),
             }
+            ,
+            {
+                path: "migrate/pnr-list",
+                name: "MigratePnrList",
+                component: () => import("@/views/migrate/PnrList.vue"),
+                meta: { title: "PNR List (migrated)" }
+            },
+            {
+                path: "migrate/pnr-loading",
+                name: "MigratePnrLoading",
+                component: () => import("@/views/migrate/PnrLoading.vue"),
+                meta: { title: "PNR Loading (migrated)" }
+            },
+            {
+                path: "migrate/pnr-fail",
+                name: "MigratePnrFail",
+                component: () => import("@/views/migrate/PnrFail.vue"),
+                meta: { title: "PNR Fail (migrated)" }
+            },
+            {
+                path: "migrate/flight-search",
+                name: "MigrateFlightSearch",
+                component: () => import("@/views/migrate/FlightSearch.vue"),
+                meta: { title: "Flight Search (migrated)" }
+            },
+            {
+                path: "migrate/search-results",
+                name: "MigrateSearchResults",
+                component: () => import("@/views/migrate/SearchResults.vue"),
+                meta: { title: "Search Results (migrated)" }
+            },
+            {
+                path: "migrate/booking",
+                name: "MigrateBooking",
+                component: () => import("@/views/migrate/Booking.vue"),
+                meta: { title: "Booking (migrated)" }
+            },
+            {
+                path: "migrate/order-management",
+                name: "MigrateOrderManagement",
+                component: () => import("@/views/migrate/OrderManagement.vue"),
+                meta: { title: "Order Management (migrated)" }
+            },
+            {
+                path: "migrate/order-detail",
+                name: "MigrateOrderDetail",
+                component: () => import("@/views/migrate/OrderDetail.vue"),
+                meta: { title: "Order Detail (migrated)" }
+            }
+            ,
+            {
+                path: "migrate/index-legacy",
+                name: "MigrateIndexLegacy",
+                component: () => import("@/views/migrate/IndexLegacy.vue"),
+                meta: { title: "Legacy Index (migrated)" }
+            }
         ]
     },
     {
