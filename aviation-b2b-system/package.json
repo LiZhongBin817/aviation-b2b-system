@@ -13,9 +13,11 @@
     "aviation-b2b-system": "file:",
     "axios": "1.13.1",
     "element-plus": "2.11.5",
+    "fullpage.js": "^4.0.40",
     "js-cookie": "3.0.5",
     "nprogress": "0.2.0",
     "pinia": "3.0.3",
+    "swiper": "^12.0.3",
     "vue": "3.5.22",
     "vue-router": "4.6.3"
   },
