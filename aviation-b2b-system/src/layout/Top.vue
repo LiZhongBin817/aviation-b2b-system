@@ -1,16 +1,10 @@
 <template>
-  <div class="header-container">
-    <div class="header-left">
-      <div @click="toggleSidebar">
-        <el-icon>
-          <component :is="sidebarStore.isCollapse ? 'Expand' : 'Fold'" />
-        </el-icon>
-      </div>
-      <Breadcrumb />
+  <div class="top-container">
+    <div class="top-left">
+      <a href="" class="logo"><img src="/images/logo.png" /></a>
     </div>
-
-    <!-- <div class="header-right">
-      <div class="header-right-container">
+    <div class="top-right">
+      <div class="top-right-container">
         <div>
           <el-icon>
             <Phone />
@@ -37,7 +31,7 @@
           </template>
         </el-dropdown>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -49,7 +43,6 @@ import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import defaultAvatar from '@/assets/image/avatar.png'
 import { useAnnouncementStore } from "@/store/announcement";
 import { announcementIconMap, announcementColorMap } from "@/utils/dict";
-import { Avatar, SwitchButton } from '@element-plus/icons-vue'
 
 const store = useAnnouncementStore();
 const activeAnnouncementId = ref(null);
@@ -63,25 +56,25 @@ function toggleSidebar() {
   sidebarStore.toggleCollapse()
 }
 
-// function handleCommand(command) {
-//   switch (command) {
-//     case 'logout':
-//       ElMessageBox.confirm('确定要退出登录吗？', '提示', {
-//         confirmButtonText: '确定',
-//         cancelButtonText: '取消',
-//         type: 'warning',
-//       }).then(() => {
-//         userStore.logout().then(() => {
-//           ElMessage.success('退出登录成功')
-//           router.push('/login')
-//         })
-//       })
-//       break
-//     case 'goMyProfile':
-//       router.push('/myself/profile')
-//       break
-//   }
-// }
+function handleCommand(command) {
+  switch (command) {
+    case 'logout':
+      ElMessageBox.confirm('确定要退出登录吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        userStore.logout().then(() => {
+          ElMessage.success('退出登录成功')
+          router.push('/login')
+        })
+      })
+      break
+    case 'goMyProfile':
+      router.push('/myself/profile')
+      break
+  }
+}
 
 watch(
   () => store.list,
@@ -129,24 +122,27 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.header-container {
+.top-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: 60px;
+  background: #0069b4;
+  padding: 0px 0px;
 }
 
-.header-left {
+.top-left {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.header-right {
+.top-right {
   display: flex;
   align-items: center;
 }
-.header-right-container{
+
+.top-right-container {
   display: flex;
   align-items: center;
   gap: 15px;

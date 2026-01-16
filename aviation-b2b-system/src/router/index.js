@@ -1,26 +1,30 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/layout/index.vue";
 import ParentView from "@/components/ParentView/index.vue";
-import {useUserStore} from "@/store/user";
-import {useMenuStore} from "@/store/menu";
-import {getToken} from "@/utils/auth";
+import { useUserStore } from "@/store/user";
+import { useMenuStore } from "@/store/menu";
+import { getToken } from "@/utils/auth";
 import NProgress from 'nprogress'
-import {getRoutesTree} from "@/api/system/menu";
+import { getRoutesTree } from "@/api/system/menu";
 
 NProgress.configure({
-  color: '#4fc08d',
-  showSpinner: false,
-  minimum: 0.1,
-  speed: 500,
-  trickle: true,
-  trickleSpeed: 200
+    color: '#4fc08d',
+    showSpinner: false,
+    minimum: 0.1,
+    speed: 500,
+    trickle: true,
+    trickleSpeed: 200
 });
-
+// 获取所有的路由文件
 const modules = import.meta.glob("@/views/**/*.vue");
+console.log(modules,'modules');
+
 
 function loadView(view) {
     for (const path in modules) {
         const match = path.match(/views\/(.*)\.vue$/);
+        console.log('match',match[1],view);
+        
         if (match && match[1] === view) {
             return () => modules[path]()
         }
@@ -161,10 +165,13 @@ function getRouteComponent(route) {
 
 function fillView(routes) {
     if (!Array.isArray(routes)) return [];
-    return routes
+    console.log(routes, 'routes');
+
+    const _routes = routes
         .map((route) => {
             if (!route.path || !route.name) return null;
             getRouteComponent(route);
+
             if (route.children && Array.isArray(route.children)) {
                 const processedChildren = fillView(route.children).filter(Boolean);
                 if (processedChildren.length === 0) {
@@ -181,6 +188,9 @@ function fillView(routes) {
             return route;
         })
         .filter(Boolean);
+    console.log(_routes, '_routes');
+
+    return _routes;
 }
 
 const router = createRouter({
@@ -188,26 +198,31 @@ const router = createRouter({
     routes: constantRoutes,
 });
 
-
 router.beforeEach((to, from, next) => {
-
     NProgress.start()
+    console.log(getToken(), to, 'getToken()');
+
     if (getToken()) {
         if (to.path === "/login") {
-            next({path: "/index"});
+            next({ path: "/index" });
         } else {
+            console.log(permitRequest(to.path), 'permitRequest(to.path)');
+
             if (permitRequest(to.path)) {
                 next()
             } else {
+                console.log(useUserStore().info, 'useUserStore().info');
                 if (useUserStore().info === null) {
                     useUserStore().fetchUserInfo().then(() => {
                         getRoutesTree({}).then(res => {
                             const dynamicRoutes = fillView(res.data || []);
+                            console.log(res.data, dynamicRoutes, 'dynamicRoutes');
+
                             dynamicRoutes.forEach((route) => {
                                 router.addRoute(route);
                             });
-                            useMenuStore().setMenuList([...constantRoutes, ...dynamicRoutes])
-                            next({...to, replace: true}); 
+                            useMenuStore().setMenuList(res.data || []); // 更新菜单列表
+                            next({ ...to, replace: true });
                         }).catch(err => {
                             useUserStore().logout().then(() => {
                                 ElMessage.error(err)
@@ -224,7 +239,7 @@ router.beforeEach((to, from, next) => {
                     next()
                 }
             }
-        } 
+        }
     } else {
         if (permitRequest(to.path)) {
             next();
@@ -233,16 +248,18 @@ router.beforeEach((to, from, next) => {
         }
     }
 });
+
+// 白名单
 const whiteList = ["/login"];
 function permitRequest(path) {
     return whiteList.some(pattern => isMatch(pattern, path))
 }
 export function isMatch(pattern, path) {
-  const regexPattern = pattern.replace(/\//g, '\\/').replace(/\*\*/g, '.*').replace(/\*/g, '[^\\/]*')
-  const regex = new RegExp(`^${regexPattern}$`)
-  return regex.test(path)
+    const regexPattern = pattern.replace(/\//g, '\\/').replace(/\*\*/g, '.*').replace(/\*/g, '[^\\/]*')
+    const regex = new RegExp(`^${regexPattern}$`)
+    return regex.test(path)
 }
 router.afterEach(() => {
-  NProgress.done()
+    NProgress.done()
 });
 export default router;

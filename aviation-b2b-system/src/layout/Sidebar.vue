@@ -1,8 +1,8 @@
 <!--
  * @Author: 斌Ge是我 1245972926@qq.com
  * @Date: 2026-01-14 21:31:04
- * @LastEditors: 斌Ge是我 1245972926@qq.com
- * @LastEditTime: 2026-01-14 22:08:30
+ * @LastEditors: lizb
+ * @LastEditTime: 2026-01-16 15:22:18
  * @FilePath: \aviation-b2b-system\aviation-b2b-system\src\layout\Sidebar.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -11,12 +11,12 @@
     <span></span>
   </div>
   <div class="sidebar-container">
-    <div class="sidebar-logo">
-      <img src="@/assets/image/logo.svg" class="sidebar-logo-img" alt="管理系统"/>
+    <!-- <div class="sidebar-logo">
+      <img src="/images/logo.png" class="sidebar-logo-img" alt="管理系统"/>
       <div class="sidebar-logo-text" :class="{ hidden: sidebarStore.isCollapse }">
         <h1 class="logo-main-title">管理系统</h1>
       </div>
-    </div>
+    </div> -->
     <el-menu :default-active="activeMenu" :default-openeds="openMenus" mode="vertical"
              background-color="rgb(50, 66, 88)" text-color="#fff" active-text-color="#ffd04b"
              :collapse="sidebarStore.isCollapse" :collapse-transition="false" :router="true" :unique-opened="true"
@@ -49,6 +49,9 @@ const openMenus = computed(() => {
   const matched = route.matched?.map(r => r.path) || []
   return matched
 })
+
+console.log(menuRoutes,'menuRoutes');
+
 </script>
 
 <style scoped>

@@ -1,24 +1,36 @@
+<!--
+ * @Descripttion: 
+ * @Author: lizb
+ * @Date: 2026-01-16 09:25:16
+ * @LastEditors: lizb
+ * @LastEditTime: 2026-01-16 14:12:40
+-->
 <template>
   <el-container class="el-container">
-    <el-aside :style="{
-      width: sidebarStore.isCollapse ? '64px' : '210px',
-      minWidth: sidebarStore.isCollapse ? '64px' : '210px',
-      maxWidth: sidebarStore.isCollapse ? '64px' : '210px',
-      transition: 'width 0.2s ease-in-out'
-    }">
-      <Sidebar/>
-    </el-aside>
+    <el-header class="header">
+      <Top />
+    </el-header>
     <el-container>
-      <el-header class="header" height="50px">
-        <Header/>
-      </el-header>
-      <el-main>
+      <el-aside :style="{
+        width: sidebarStore.isCollapse ? '64px' : '210px',
+        minWidth: sidebarStore.isCollapse ? '64px' : '210px',
+        maxWidth: sidebarStore.isCollapse ? '64px' : '210px',
+        transition: 'width 0.2s ease-in-out'
+      }">
+        <Sidebar />
+      </el-aside>
+      <el-container>
+        <el-header class="header" height="50px">
+          <Header />
+        </el-header>
+        <el-main>
           <router-view v-slot="{ Component }">
             <transition name="fade" mode="out-in">
               <component :is="Component" />
             </transition>
           </router-view>
-      </el-main>
+        </el-main>
+      </el-container>
     </el-container>
   </el-container>
 </template>
@@ -26,7 +38,8 @@
 <script setup>
 import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
-import {useSidebarStore} from '@/store'
+import { useSidebarStore } from '@/store'
+import Top from './Top.vue'
 
 const sidebarStore = useSidebarStore()
 
@@ -36,15 +49,18 @@ const sidebarStore = useSidebarStore()
 .el-container {
   height: 100vh;
 }
+
 .header {
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
+  padding: 0;
 }
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

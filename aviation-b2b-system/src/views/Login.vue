@@ -9,33 +9,30 @@
 
     <div id="dowebok">
       <div class="section" id="section1">
-        <div class="login-box" data-wow-duration="1.2s">
+        <form class="login-box" data-wow-duration="1.2s" @submit.prevent="handleLogin">
           <h3 class="title">Account login</h3>
           <div class="login-item">
             <span>Account：</span>
-            <input
-              type="text"
-              placeholder="Username/email address/mobile phone number"
-            />
+            <input type="text" placeholder="Username/email address/mobile phone number" v-model="loginForm.username"
+              required />
           </div>
           <div class="login-item">
             <span>Password:</span>
-            <input type="text" placeholder="Please enter the password." />
+            <input type="password" placeholder="Please enter the password." v-model="loginForm.password" required />
           </div>
           <div class="login-item login-item-yzm">
-            <input
-              type="text"
-              placeholder="Please enter the verification code"
-            />
-            <a href=""><img src="/images/codetp.png" alt="" /></a>
+            <input type="text" placeholder="Please enter the verification code" v-model="loginForm.code" required />
+            <a href="" @click.prevent="getCodeImage">
+              <img :src="codeImageUrl || '/images/codetp.png'" alt="" />
+            </a>
           </div>
           <div class="login-item">
-            <button type="submit">Log in</button>
+            <button type="submit" :disabled="loading">Log in</button>
           </div>
           <div class="login-item">
             <a href="" class="forgot">Forgot password?</a>
           </div>
-        </div>
+        </form>
       </div>
       <div class="section" id="section2">
         <div class="inabout-box">
@@ -244,6 +241,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Swiper from "swiper";
 import { Navigation, Autoplay } from "swiper/modules";
+import { useUserStore } from '@/store/user'
 
 // 基础变量
 const router = useRouter();
@@ -254,21 +252,6 @@ const codeImageUrl = ref("");
 // 实例保存（用于销毁）
 let fullpageInstance = null;
 let swiperInstance = null;
-
-// 模拟用户store（实际项目替换为真实的store）
-const useUserStore = () => ({
-  login: (form) =>
-    new Promise((resolve, reject) => {
-      // 模拟登录接口请求
-      setTimeout(() => {
-        if (form.username && form.password && form.code) {
-          resolve();
-        } else {
-          reject(new Error("Login failed"));
-        }
-      }, 1000);
-    }),
-});
 
 // 模拟request请求（实际项目替换为axios/request）
 const request = (options) =>
@@ -288,6 +271,8 @@ const request = (options) =>
 
 // 登录处理
 function handleLogin() {
+  console.log(1111, loginForm);
+
   // 基础验证
   if (
     !loginForm.value.username ||

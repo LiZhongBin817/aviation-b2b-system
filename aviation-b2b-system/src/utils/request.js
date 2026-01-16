@@ -1,12 +1,19 @@
+/*
+ * @Descripttion: 
+ * @Author: lizb
+ * @Date: 2026-01-16 09:25:16
+ * @LastEditors: lizb
+ * @LastEditTime: 2026-01-16 10:33:11
+ */
 import axios from "axios";
 import router from "@/router";
-import {useUserStore} from "@/store/user";
-import {getToken} from "@/utils/auth";
+import { useUserStore } from "@/store/user";
+import { getToken } from "@/utils/auth";
 
 const request = axios.create({
-    baseURL: import.meta.env.VITE_APP_BASE_API || "",
+    baseURL: import.meta.env.MODE === 'production' ? import.meta.env.VITE_APP_BASE_API || "" : '/',
     timeout: 20000,
-    headers: {"Content-Type": "application/json;charset=utf-8"},
+    headers: { "Content-Type": "application/json;charset=utf-8" },
 });
 
 // 请求前置处理
@@ -46,20 +53,20 @@ request.interceptors.response.use(
                 router.push("/login");
             })
         } else if (code === 500) {
-            ElMessage({message: msg, type: "error"});
+            ElMessage({ message: msg, type: "error" });
             return Promise.reject(new Error(msg));
         } else if (code === 601) {
-            ElMessage({message: msg, type: "warning"});
+            ElMessage({ message: msg, type: "warning" });
             return Promise.reject(new Error(msg));
         } else if (code !== 200) {
-            ElNotification.error({title: msg});
+            ElNotification.error({ title: msg });
             return Promise.reject("error");
         } else {
             return Promise.resolve(res.data);
         }
     },
     (error) => {
-        let {message} = error;
+        let { message } = error;
         if (message == "Network Error") {
             message = "后端接口连接异常";
         } else if (message.includes("timeout")) {
@@ -67,7 +74,7 @@ request.interceptors.response.use(
         } else if (message.includes("Request failed with status code")) {
             message = "系统接口" + message.substr(message.length - 3) + "异常";
         }
-        ElMessage({message: message, type: "error", duration: 5 * 1000});
+        ElMessage({ message: message, type: "error", duration: 5 * 1000 });
         return Promise.reject(error);
     }
 );
